@@ -3,11 +3,10 @@ const workoutRoutes = require('./routes/workout')
 const mongoose = require('mongoose')
 require('dotenv').config()
 const cors = require('cors');
-
-
-
+const userRoutes = require('./routes/user')
 
 const app = express() // عملت تطبيق اكبريس جديد
+
 app.use(cors());
 
 /*
@@ -20,8 +19,10 @@ res.json({mssg:'welcome to the app '})
 
 // middleware
 app.use(express.json()) // use --> هو وسيط بين الكلاينت و السيرفر 
+
 // routes               //هون بحول من جيسون ل اوبجيكت
 app.use('/api/workouts', workoutRoutes) //  هون اسم الميدل وير اللي بدي انشئه و اللي رح يصير رووت تبعنا , اسم الملف اللي فيه الراوتس
+app.use('/api/user', userRoutes)
 /*
 app.listen(4000,()=>{ //جوا كول باك فنكشن عشان يتأكد اول اذا البورت شغال ولا لا و بعدين اذا اشتغل يفوت عالفنكشن و يرجع الريسبونس,  اول باراميتتر هو البورت و التاني هو الريسبونس
 console.log('listening on port 4000')
